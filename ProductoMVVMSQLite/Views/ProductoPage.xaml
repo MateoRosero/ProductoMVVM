@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProductoMVVMSQLite.Views.ProductoPage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             Title="ProductoPage">
+
+    <VerticalStackLayout>
+
+        <!-- Botón "Nuevo Producto" al inicio -->
+        <Button Text="Nuevo Producto"
+                FontSize="20"
+                HorizontalOptions="Fill"
+                Command="{Binding CrearProducto}"/>
+
+        <!-- Cabezal con imagen y título -->
+        <HorizontalStackLayout BackgroundColor="DarkBlue">
+            <Image Source="dotnet_bot.png"
+                   HeightRequest="50"
+                   WidthRequest="100"/>
+            <Label x:Name="Username"
+                   Text="Productos"
+                   FontSize="30"
+                   TextColor="White"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center" />
+        </HorizontalStackLayout>
+
+        <!-- Sección de contenido del producto -->
+        <ListView x:Name="listaProductos"
+          VerticalOptions="FillAndExpand"
+          HorizontalOptions="FillAndExpand"
+          ItemsSource="{Binding ListaProductos}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Vertical" Margin="8" BackgroundColor="White" Padding="2">
+                            <Label Text="{Binding Nombre}"
+                           FontSize="10"
+                           Margin="0,0,8,15"/>
+                            <Label Text="{Binding Descripcion}"
+                           FontSize="10"
+                           LineBreakMode="TailTruncation"
+                           MaxLines="5"
+                           Margin="0,0,8,15"/>
+                            <Label Text="{Binding Cantidad}"
+                           FontSize="10"
+                           Margin="0,0,8,15"/>
+
+                            <!-- Botones de acción (Editar, Eliminar) -->
+                            <StackLayout Orientation="Horizontal" Spacing="8" HorizontalOptions="End">
+                                <Button Text="Editar"
+                                FontSize="10"
+                                BackgroundColor="LightSkyBlue"
+                                TextColor="White"
+                                Padding="8"
+                                Command="{Binding BindingContext.EditarProducto, Source={x:Reference Name=listaProductos}}"
+                                CommandParameter="{Binding}"/>
+                                <Button Text="Eliminar"
+                                FontSize="10"
+                                BackgroundColor="LightCoral"
+                                TextColor="White"
+                                Padding="8"
+                                Command="{Binding BindingContext.EliminarProducto, Source={x:Reference Name=listaProductos}}"
+                                CommandParameter="{Binding}"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+
+    </VerticalStackLayout>
+</ContentPage>

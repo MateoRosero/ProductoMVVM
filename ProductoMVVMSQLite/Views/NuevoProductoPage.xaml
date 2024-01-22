@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProductoMVVMSQLite.Views.NuevoProductoPage"
+             Title="NuevoProductoPage">
+    <VerticalStackLayout>
+        <TableView>
+            <TableRoot>
+                <TableSection Title="Ingrese los datos para un nuevo producto">
+                    <EntryCell x:Name="Nombre"
+                               Placeholder="Nombre"
+                               Text= "{Binding Nombre}"/>
+                    <EntryCell x:Name="Cantidad"
+                               Placeholder="Cantidad"
+                               Text="{Binding Cantidad}"
+                               Keyboard="Numeric"/>
+                    <EntryCell x:Name="Descripcion"
+                               Text="{Binding Descripcion}"
+                               Placeholder="Descripcion"/>
+                    
+                </TableSection>
+            </TableRoot>
+        </TableView>
+        <Button Text="Guardad Producto"
+                Command="{Binding GuardarProducto}"/>
+
+       
+
+        
+    </VerticalStackLayout>
+</ContentPage>
