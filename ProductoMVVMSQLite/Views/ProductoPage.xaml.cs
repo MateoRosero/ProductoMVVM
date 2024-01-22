@@ -4,9 +4,10 @@ namespace ProductoMVVMSQLite.Views;
 
 public partial class ProductoPage : ContentPage
 {
-	public ProductoPage()
-	{
-		InitializeComponent();
-		BindingContext = new ProductoViewModel();
-	}
+    public ProductoPage()
+    {
+        InitializeComponent();
+        BindingContext = new ProductoViewModel();
+    }
+
 }
